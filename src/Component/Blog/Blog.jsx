@@ -2,9 +2,9 @@ import React from 'react';
 import { FaRegBookmark } from "react-icons/fa6";
 
 
-const Blog = ({ blog, handleBookMark }) => {
+const Blog = ({ blog, handleBookMark, handleMarkAsReadBtn }) => {
 
-    const { cover, title, author_img, author } = blog;
+    const { cover, title, author_img, author, hashtags, reading_time, id } = blog;
 
     return (
         <div >
@@ -25,8 +25,15 @@ const Blog = ({ blog, handleBookMark }) => {
 
                     <h2 className="card-title">{title}</h2>
                     <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
+
+                    <div className='flex justify-between text-lg font-semibold'>
+                        {
+                            hashtags.map(hash => <p key={hash}>{hash}</p>)
+                        }
+                    </div>
+
                     <div className="card-actions justify-end">
-                        <button className="btn btn-primary">Mark as Read</button>
+                        <button onClick={() => handleMarkAsReadBtn(reading_time, id)} className="btn btn-primary">Mark as Read</button>
                     </div>
                 </div>
             </div>
